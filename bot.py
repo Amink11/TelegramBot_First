@@ -8,10 +8,10 @@ dispatcher = updater.dispatcher
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
-
+#adding answer to start command
 def start(update,context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Welcome to my first bot!")
-
+#adding answer to choose command
 def choose(update,context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Please choose one of these!")
 
