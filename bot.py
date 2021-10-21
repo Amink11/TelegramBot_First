@@ -1,5 +1,7 @@
 from telegram.ext import Updater
 from telegram.ext import CommandHandler
+from telegram.ext import MessageHandler, Filters
+
 import logging
 
 
@@ -10,16 +12,24 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                      level=logging.INFO)
 #adding answer to start command
 def start(update,context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Welcome to my first bot!")
+    context.bot.send_message(chat_id=update.effective_chat.id, text="به ربات اکو خوش آمدید")
 #adding answer to choose command
 def choose(update,context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Please choose one of these!")
+#echo everything you send
+def echo(update,context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
 
 start_handler = CommandHandler('start',start)
 dispatcher.add_handler(start_handler)
 
-start_handler1 = CommandHandler('choose',choose)
-dispatcher.add_handler(start_handler1)
+choose_handler = CommandHandler('choose',choose)
+dispatcher.add_handler(choose_handler)
+
+echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
+dispatcher.add_handler(echo_handler)
+
+
 
 updater.start_polling()
 
