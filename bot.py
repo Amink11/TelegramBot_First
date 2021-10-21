@@ -39,7 +39,7 @@ dispatcher.add_handler(start_handler)
 choose_handler = CommandHandler('choose',choose)
 dispatcher.add_handler(choose_handler)
 
-echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
+echo_handler = MessageHandler(Filters.text, echo)
 dispatcher.add_handler(echo_handler)
 
 
