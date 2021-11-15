@@ -2,6 +2,7 @@
 author : Amink11
 Description : Telegram bot
 Date_of_Develope : 1400-07-29 / 21 oct 2021
+second develope : 1400-08-09 / 31 oct 2021
 Date_Of_release :
 """
 
@@ -13,7 +14,7 @@ from telegram.ext import MessageHandler, Filters
 import logging
 
 
-updater = Updater(token='2099981011:AAEFGqZcvGMcO782cxDlIBR7gzZIlikLoxE', use_context=True)
+updater = Updater(token='2099981011:AAEFGqZcvGMcO782cxDlIBR7gzZIlikLoxE')
 dispatcher = updater.dispatcher
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -29,7 +30,7 @@ def choose(update,context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Please choose one of these!")
 #echo everything you send
 def echo(update,context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Your message is : " + update.message.text)
 #aaa
 def caps(update, context):
     text_caps = ' '.join(context.args).upper()
